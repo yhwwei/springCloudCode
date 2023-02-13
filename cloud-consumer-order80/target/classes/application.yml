@@ -1,0 +1,9 @@
+server:
+  port: 81
+eureka:
+  client:
+    register-with-eureka: false    #服务消费者，不需要把自己注册进去，只要能从eureka获取提供者的信息就行
+    fetch-registry: true
+    service-url:
+      #对于client，要把自己的服务注册到服务中心，给出服务器的url，多个表示是集群
+      defaultZone: http://eureka7001.com:7001/eureka/, http://eureka7002.com:7002/eureka/

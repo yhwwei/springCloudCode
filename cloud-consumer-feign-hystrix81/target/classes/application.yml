@@ -1,0 +1,11 @@
+server:
+  port: 81
+
+eureka:
+  client:
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+feign:
+  hystrix:
+    enabled: true   #开启feign调用时使用hystrix降级处理

@@ -1,0 +1,29 @@
+server:
+  port: 7001
+
+#单机版本
+eureka:
+  instance:
+    hostname: eureka7001.com
+  client:
+    register-with-eureka: false #该模块是服务注册中心，肯定不向注册中心注册自己
+    fetch-registry: false       #自己就是服务器，不从eureka服务器获取注册信息
+    service-url:
+      #设置与eureka server交互的地址查询服务和注册服务都需要依赖这个地址
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+
+#集群版
+#eureka:
+#  instance:
+#    hostname: eureka7001.com     #eureka服务器名称
+#  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+#    service-url:
+#      defaultZone: http://eureka7002.com:7002/eureka/  #集群下互相指向，这个表示副本，如果自己宕机了，就会让请求去这些副本，可以写多个defaultZone：url1,url2
+#  server:
+##    关闭自我保护机制，保证不可用服务被及时踢除
+#    enable-self-preservation: false
+#    eviction-interval-timer-in-ms: 2000
+

@@ -1,0 +1,15 @@
+server:
+  port: 8007
+
+
+spring:
+  application:
+    name: consul-provider-payment
+  cloud:
+    # consul服务器所在ip和服务端口
+    consul:
+      host: localhost
+      port: 8500
+      # 对外暴露的服务名称  不像zookeeper和eureka默认是application的名称  测试后不写也可能 默认跟上面
+      discovery:
+        service-name: ${spring.application.name}
